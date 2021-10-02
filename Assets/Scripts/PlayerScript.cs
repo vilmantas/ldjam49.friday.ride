@@ -13,16 +13,6 @@ public class PlayerScript : MonoBehaviour
     public float PlayerRotationPower;
 
     [Range(1, 10f)]
-    public float RotationSpeedMin = 2f;
-    [Range(1, 10f)]
-    public float RotationSpeedDeviation = 5f;
-
-    [Range(1, 10f)]
-    public float SwingingDurationMin = 2f;
-    [Range(1, 10f)]
-    public float SwingingDurationDeviation = 5f;
-
-    [Range(1, 10f)]
     public float SwingingIntervalMin = 2f;
     [Range(1, 10f)]
     public float SwingingIntervalDeviation = 5f;
@@ -41,7 +31,6 @@ public class PlayerScript : MonoBehaviour
     private Vector3 target = Vector3.forward;
     private float directionDelta = 0f;
     private Vector3 NewTarget = Vector3.zero;
-    private int direction = 0;
 
     [HideInInspector]
     public float TimeTillNextSwing = 5f;
@@ -81,6 +70,11 @@ public class PlayerScript : MonoBehaviour
 
         SwingingDuration -= Time.deltaTime;
         TimeTillNextSwing -= Time.deltaTime;
+
+        if (SwingingDuration < 0)
+        {
+            RotationSpeed = 0f;
+        }
 
         if (TimeTillNextSwing < 0f)
         {
