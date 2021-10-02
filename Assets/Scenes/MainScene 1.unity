@@ -170,6 +170,11 @@ MonoBehaviour:
   Tile: {fileID: 2669812929884429000, guid: 4f708f66f5fb8ec45bafba749a4567cd, type: 3}
   Reset: 0
   Generate: 0
+--- !u!4 &247809999 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7635096902872936381, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
+  m_PrefabInstance: {fileID: 5747741370486300042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &306373416
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,15 +457,11 @@ MonoBehaviour:
     m_Bits: 8
   Head: {fileID: 5747741370486300043}
   PlayerRotationPower: 0
-  RotationSpeedMin: 2
-  RotationSpeedDeviation: 5
-  SwingingDurationMin: 2
-  SwingingDurationDeviation: 5
   SwingingIntervalMin: 2
   SwingingIntervalDeviation: 5
   Arc: 45
   Speed: 3
-  Body: {fileID: 0}
+  Body: {fileID: 247809999}
   TimeTillNextSwing: 5
   SwingingDuration: 0
   RotationSpeed: 0
@@ -508,6 +509,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

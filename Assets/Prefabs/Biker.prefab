@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7635096902872936381}
   - component: {fileID: 8334549353211585886}
   m_Layer: 0
-  m_Name: Models
+  m_Name: Alcoholic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
