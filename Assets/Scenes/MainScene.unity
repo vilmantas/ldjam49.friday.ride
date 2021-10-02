@@ -383,6 +383,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2669812929884429001, guid: 4f708f66f5fb8ec45bafba749a4567cd, type: 3}
   m_PrefabInstance: {fileID: 2669812928771413512}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1533824718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533824719}
+  m_Layer: 0
+  m_Name: models
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1533824719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533824718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1991945275}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1600784244
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +494,11 @@ MonoBehaviour:
   TimeTillNextSwing: 5
   SwingingDuration: 0
   RotationSpeed: 0
+--- !u!4 &1991945275 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5747741369772650928, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
+  m_PrefabInstance: {fileID: 5747741370486300042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2020703050
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +543,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -703,6 +739,18 @@ PrefabInstance:
     - target: {fileID: 5747741369772650931, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
       propertyPath: m_Name
       value: Biker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635096902872936381, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635096902872936381, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8334549353211585886, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
+      propertyPath: speed
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
