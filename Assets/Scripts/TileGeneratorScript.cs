@@ -37,7 +37,6 @@ public class TileGeneratorScript : MonoBehaviour
         if (!Generate) return;
 
         Generate = false;
-
         AppendTile(Tile);
     }
 
