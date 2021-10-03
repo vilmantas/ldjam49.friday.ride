@@ -90,7 +90,6 @@ public class TileGeneratorScript : MonoBehaviour
         {
             b = GetTileBounds(Tile);
         }
-
-        Gizmos.DrawWireCube(NextPosition, b.size);
+        Gizmos.DrawCube(NextPosition, GetTileBounds(Tile).size);
     }
 }
