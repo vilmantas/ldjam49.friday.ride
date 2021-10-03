@@ -106,6 +106,8 @@ public class PlayerScript : MonoBehaviour
 
         transform.position += transform.forward * Speed * Time.deltaTime;
 
+        Debug.Log(transform.eulerAngles);
+
         if (directionDelta != 0)
         {
             var newRotation = Vector3.RotateTowards(transform.forward, directionDelta * transform.right, (PlayerRotationPower - RotationSpeed) * Time.deltaTime, 0f);
