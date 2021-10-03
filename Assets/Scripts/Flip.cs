@@ -12,6 +12,8 @@ public class Flip : MonoBehaviour
 
     public void flip()
     {
+        if (GameEngine.Pause) return;
+
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
