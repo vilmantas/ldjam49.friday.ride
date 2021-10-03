@@ -84,7 +84,7 @@ public class PlayerScript : MonoBehaviour
 
         NewTarget = Quaternion.Euler(0, Arc * RotationDireciton, 0) * Vector3.forward;
 
-        var orig = Input.GetAxis("Horizontal") * PlayerRotationPowerAcceleration;
+        var orig = Input.GetAxisRaw("Horizontal") * PlayerRotationPowerAcceleration;
         directionDelta = orig > 1f ? 1f : orig < -1f ? -1f : orig;
         Body.rotation = Quaternion.Euler(new Vector3(0, 0, -transform.eulerAngles.y));
 

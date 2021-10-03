@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7441284292799525900}
   - component: {fileID: 6224390861311004824}
   - component: {fileID: 8758819402925771514}
+  - component: {fileID: 128618598720477050}
   m_Layer: 0
   m_Name: a fallen tree
   m_TagString: Untagged
@@ -94,8 +95,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.000001, y: 1.1, z: 2.2000008}
-  m_Center: {x: -0.000000008940696, y: 0.55, z: -0.30000004}
+  m_Size: {x: 1.853154, y: 0.59039944, z: 1.131358}
+  m_Center: {x: -0.82788885, y: 0.29519647, z: -0.33334312}
+--- !u!65 &128618598720477050
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3541448345501195901}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8924413, y: 0.2783552, z: 0.51890624}
+  m_Center: {x: 1.0280975, y: 0.13917467, z: -0.27541688}
 --- !u!1 &5523677458338752164
 GameObject:
   m_ObjectHideFlags: 0
