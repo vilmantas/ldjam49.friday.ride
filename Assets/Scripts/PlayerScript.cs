@@ -78,7 +78,7 @@ public class PlayerScript : MonoBehaviour
 
         if (GameEngine.Pause) 
         {
-            //Particles.Stop();
+            Particles.Stop();
             return;
         } else
         {
