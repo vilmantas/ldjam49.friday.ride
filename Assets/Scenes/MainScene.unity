@@ -1425,6 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8271db0a43801e4f9402ca299ecbccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Particles: {fileID: 1991945278}
   BalanceTrigger: {fileID: 5747741370486300044}
   Engine: {fileID: 1600784246}
   EndingLayer:
@@ -1468,6 +1469,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!198 &1991945278 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5006339314736247156, guid: 1d114885095c43d42af797ed347bcf1a, type: 3}
+  m_PrefabInstance: {fileID: 5747741370486300042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1997323689
 PrefabInstance:
   m_ObjectHideFlags: 0

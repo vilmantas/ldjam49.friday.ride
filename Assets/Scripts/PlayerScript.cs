@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public ParticleSystem Particles;
     public GameObject BalanceTrigger;
 
     public GameEngine Engine;
@@ -75,7 +76,17 @@ public class PlayerScript : MonoBehaviour
             Engine.MapGenerator.AppendTile(Engine.MapGenerator.Tile);
         }
 
-        if (GameEngine.Pause) return;
+        if (GameEngine.Pause) 
+        {
+            Particles.Stop();
+            return;
+        } else
+        {
+            if (!Particles.isPlaying)
+            {
+                Particles.Play();
+            }
+        }
 
         if (Physics.Raycast(new Ray(BalanceTrigger.transform.position, Vector3.down), out RaycastHit info, 10f, GroundLayer))
         {
