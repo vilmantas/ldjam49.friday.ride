@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Range(3, 100)]
+    public float StartingSpeed = 3f;
+
+    [Range(10, 100)]
+    public float SpeedIncreaseMax = 10f;
+
+    [Range(60, 600)]
+    public float TimeToMaxSpeed = 60f;
+
     public ParticleSystem Particles;
     public GameObject BalanceTrigger;
 
@@ -26,7 +35,6 @@ public class PlayerScript : MonoBehaviour
 
 
     public float Arc = 45f;
-    public float Speed = 3f;
 
     public Transform Body;
 
@@ -58,6 +66,7 @@ public class PlayerScript : MonoBehaviour
     {
         StartRotation = transform.rotation;
         StartPosition = transform.position;
+        GameEngine.MaxSpeed = StartingSpeed + SpeedIncreaseMax;
         Restart();
     }
 
@@ -137,7 +146,13 @@ public class PlayerScript : MonoBehaviour
     {
         if (GameEngine.Pause) return;
 
-        transform.position += transform.forward * Speed * Time.deltaTime;
+        var timeCompletion = Time.timeSinceLevelLoad / TimeToMaxSpeed;
+
+        var increase = Mathf.Lerp(0, SpeedIncreaseMax, timeCompletion);
+
+        GameEngine.CurrentSpeed = StartingSpeed + increase;
+
+        transform.position += transform.forward * GameEngine.CurrentSpeed * Time.deltaTime;
 
         if (directionDelta != 0)
         {

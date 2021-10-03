@@ -9,10 +9,14 @@ public class ScoreScript : MonoBehaviour
 
     public Text ScoreText;
 
+    public Text SpeedText;
+
     private void Update()
     {
         ScoreText.text = Score().ToString("0.0");
         Engine.Score = Score();
+
+        SpeedText.text = $"{GameEngine.CurrentSpeed.ToString("00")} / {GameEngine.MaxSpeed.ToString("00")}";
     }
 
     [HideInInspector]

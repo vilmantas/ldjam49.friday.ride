@@ -35,6 +35,14 @@ public class GameEngine : MonoBehaviour
 
     public static string GameOverCause = string.Empty;
 
+
+    [HideInInspector]
+    public static float CurrentSpeed = 1f;
+
+
+    [HideInInspector]
+    public static float MaxSpeed = 2f;
+
     [HideInInspector]
     public float Score = 0f;
     private void Start()
