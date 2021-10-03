@@ -27,8 +27,6 @@ public class IntroScript : MonoBehaviour
 
         var t = Time.timeSinceLevelLoad % 60f / 60f;
 
-        Debug.Log(t);
-
         Sun.rotation = Quaternion.Euler(new Vector3(Sun.rotation.eulerAngles.x, t * 90, Sun.rotation.eulerAngles.z));
 
         var alpha = Mathf.Lerp(1f, 0f, (Time.timeSinceLevelLoad - 0.7f) / FadeInTime );

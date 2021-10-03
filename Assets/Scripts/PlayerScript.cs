@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Range(1,10)]
+    public float SwingBuildupTime = 1f;
+
     [Range(3, 100)]
     public float StartingSpeed = 3f;
 
@@ -75,7 +78,6 @@ public class PlayerScript : MonoBehaviour
         Engine.SetGameOver($"You hit {collision.gameObject.name}");
     }
 
-
     private void Update()
     {
         Ray r = new Ray(Head.position, Vector3.forward);
@@ -130,14 +132,14 @@ public class PlayerScript : MonoBehaviour
 
     void SetSmallSwinging()
     {
-        SwingingDuration = UnityEngine.Random.Range(5, 5 + 5);
+        SwingingDuration = UnityEngine.Random.Range(5, 5 + 5) + SwingBuildupTime;
         SwingingLeft = SwingingDuration;
         RotationSpeed = UnityEngine.Random.Range(PlayerRotationPower * 0.1f, PlayerRotationPower * 0.1f + PlayerRotationPower * 0.3f);
     }
 
     void SetMediumSwinging()
     {
-        SwingingDuration = UnityEngine.Random.Range(1f, 1f + 3f);
+        SwingingDuration = UnityEngine.Random.Range(1f, 1f + 3f) + SwingBuildupTime;
         SwingingLeft = SwingingDuration;
         RotationSpeed = UnityEngine.Random.Range(PlayerRotationPower * 0.4f, PlayerRotationPower * 0.4f + PlayerRotationPower * 0.2f);
     }
@@ -154,15 +156,19 @@ public class PlayerScript : MonoBehaviour
 
         transform.position += transform.forward * GameEngine.CurrentSpeed * Time.deltaTime;
 
+        var x = Mathf.Lerp(1, 0, (SwingingLeft - (SwingingDuration - SwingBuildupTime)) / SwingBuildupTime);
+
+        Debug.Log(x);
+
         if (directionDelta != 0)
         {
-            var newRotation = Vector3.RotateTowards(transform.forward, directionDelta * transform.right, (PlayerRotationPower - RotationSpeed) * Time.deltaTime, 0f);
+            var newRotation = Vector3.RotateTowards(transform.forward, directionDelta * transform.right, (PlayerRotationPower - RotationSpeed * x) * Time.deltaTime, 0f);
 
             transform.rotation = Quaternion.LookRotation(newRotation);
         } 
         else if (SwingingLeft > 0f)
         {
-            var newRotation = Vector3.RotateTowards(transform.forward, NewTarget.normalized, RotationSpeed * Time.deltaTime, 0f);
+            var newRotation = Vector3.RotateTowards(transform.forward, NewTarget.normalized, RotationSpeed * x * Time.deltaTime, 0f);
 
             transform.rotation = Quaternion.LookRotation(newRotation);
         }
