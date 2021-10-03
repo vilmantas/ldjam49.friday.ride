@@ -37,12 +37,12 @@ public class TileGeneratorScript : MonoBehaviour
         if (!Generate) return;
 
         Generate = false;
-        AppendTile(Tiles[Random.Range(0, Tiles.Length + 1)]);
+        AppendTile(Tiles[Random.Range(0, Tiles.Length)]);
     }
 
     public GameObject GetRandomTile()
     {
-        return Tiles[Random.Range(0, Tiles.Length + 1)];
+        return Tiles[Random.Range(0, Tiles.Length)];
     }
 
     public void AppendTile(GameObject tile)
