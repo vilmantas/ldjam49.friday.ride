@@ -1130,7 +1130,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303503005}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ebb61358258a0274ba31aeb637b404c7, type: 3}
@@ -1384,6 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8271db0a43801e4f9402ca299ecbccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwingBuildupTime: 1
   StartingSpeed: 30
   SpeedIncreaseMax: 70
   TimeToMaxSpeed: 180
