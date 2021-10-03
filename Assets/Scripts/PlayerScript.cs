@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject BalanceTrigger;
+
     public GameEngine Engine;
     public LayerMask EndingLayer;
+    public LayerMask GroundLayer;
     public Transform Head;
+
+    [Range(1, 5)]
+    public float PlayerRotationPowerAcceleration = 2f;
 
     [Range(1 ,5)]
     public float PlayerRotationPower;
@@ -54,6 +60,12 @@ public class PlayerScript : MonoBehaviour
         TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingLeft, SwingingIntervalMin + SwingingIntervalDeviation + SwingingLeft);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Engine.SetGameOver($"You hit {collision.gameObject.name}");
+    }
+
+
     private void Update()
     {
         Ray r = new Ray(Head.position, Vector3.forward);
@@ -63,11 +75,17 @@ public class PlayerScript : MonoBehaviour
             Engine.MapGenerator.AppendTile(Engine.MapGenerator.Tile);
         }
 
-        if (GameEngine.Stop) return;
+        if (GameEngine.Pause) return;
+
+        if (Physics.Raycast(new Ray(BalanceTrigger.transform.position, Vector3.down), out RaycastHit info, 10f, GroundLayer))
+        {
+            GameEngine.DistanceToGround = info.distance;
+        }
 
         NewTarget = Quaternion.Euler(0, Arc * RotationDireciton, 0) * Vector3.forward;
 
-        directionDelta = Input.GetAxisRaw("Horizontal");
+        var orig = Input.GetAxis("Horizontal") * PlayerRotationPowerAcceleration;
+        directionDelta = orig > 1f ? 1f : orig < -1f ? -1f : orig;
         Body.rotation = Quaternion.Euler(new Vector3(0, 0, -transform.eulerAngles.y));
 
         SwingingLeft -= Time.deltaTime;
@@ -106,7 +124,7 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameEngine.Stop) return;
+        if (GameEngine.Pause) return;
 
         transform.position += transform.forward * Speed * Time.deltaTime;
 
@@ -127,22 +145,10 @@ public class PlayerScript : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawRay(transform.position, transform.forward * 5, Color.white);
-
-        var z = Quaternion.Euler(0, -Arc, 0) * Vector3.forward;
-
-        Debug.DrawRay(transform.position, z, Color.green);
-
-        z = Quaternion.Euler(0, Arc, 0) * Vector3.forward;
-
-        Debug.DrawRay(transform.position, z, Color.green);
-
-        if (HitInfo.collider != null)
+        Ray r = new Ray(BalanceTrigger.transform.position, Vector3.down);
+        if (Physics.Raycast(r, out RaycastHit info, 10f, GroundLayer))
         {
-            Debug.DrawRay(Head.position, HitInfo.point, Color.gray);
-        } else
-        {
-            Debug.DrawRay(Head.position, Vector3.forward * 100f, Color.cyan);
+            Debug.DrawRay(BalanceTrigger.transform.position, Vector3.down * info.distance, Color.red);
         }
     }
 }
