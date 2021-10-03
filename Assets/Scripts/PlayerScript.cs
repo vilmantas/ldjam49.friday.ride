@@ -158,8 +158,6 @@ public class PlayerScript : MonoBehaviour
 
         var x = Mathf.Lerp(1, 0, (SwingingLeft - (SwingingDuration - SwingBuildupTime)) / SwingBuildupTime);
 
-        Debug.Log(x);
-
         if (directionDelta != 0)
         {
             var newRotation = Vector3.RotateTowards(transform.forward, directionDelta * transform.right, (PlayerRotationPower - RotationSpeed * x) * Time.deltaTime, 0f);

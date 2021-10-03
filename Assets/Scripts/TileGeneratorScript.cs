@@ -29,7 +29,7 @@ public class TileGeneratorScript : MonoBehaviour
             b.Encapsulate(GetTileBounds(item.gameObject));
         }
 
-        NextPosition.z += b.size.z;
+        NextPosition = new Vector3(transform.position.x, transform.position.y, b.max.z);
     }
 
     // Update is called once per frame
@@ -75,18 +75,20 @@ public class TileGeneratorScript : MonoBehaviour
 
     public void AppendTile(GameObject tile)
     {
-        var instance = Instantiate(tile, NextPosition, new Quaternion(), transform);
-
-        var renderer = tile.GetComponentsInChildren<Renderer>();
-
         Bounds b = new Bounds();
 
-        foreach (var item in renderer)
+        foreach (Transform item in transform)
         {
-            b.Encapsulate(item.bounds);
+            b.Encapsulate(GetTileBounds(item.gameObject));
         }
 
-        NextPosition.z += b.size.z;
+        var z = new Vector3(transform.position.x, transform.position.y, b.max.z);
+
+        var bounds = GetTileBounds(tile);
+        var newLocation = new Vector3(z.x, z.y, z.z + (bounds.size.z / 2));
+        Instantiate(tile, newLocation, new Quaternion(), transform);
+
+        NextPosition.z += bounds.size.z;
         Counter++;
         if (Counter == 1) return;
         Destroy(transform.GetChild(0).gameObject);
@@ -110,6 +112,15 @@ public class TileGeneratorScript : MonoBehaviour
     {
         if (Tiles == null || Tiles.Length == 0) return;
 
-        Gizmos.DrawWireCube(NextPosition, GetTileBounds(Tiles[0]).size);
+        Bounds b = new Bounds();
+
+        foreach (Transform item in transform)
+        {
+            b.Encapsulate(GetTileBounds(item.gameObject));
+        }
+
+        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, b.max.z), new Vector3(transform.position.x, transform.position.y, b.max.z) + (Vector3.up * 100f));
+        var newBounds = GetTileBounds(CurrentTile);
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y, b.max.z + (newBounds.size.z / 2)), newBounds.size);
     }
 }
