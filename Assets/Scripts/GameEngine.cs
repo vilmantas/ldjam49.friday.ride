@@ -23,7 +23,7 @@ public class GameEngine : MonoBehaviour
 
     public static bool GameOver = false;
 
-    public static bool GameStarted = false;
+    public static bool GameStarted = true;
 
     public static bool GameStarting => GameStartDelay > 0 && GameStarted;
 
@@ -53,6 +53,8 @@ public class GameEngine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("InstructionsScene");
+
         if (Input.GetKeyDown(KeyCode.Space)) GameStarted = true;
 
         GameStartDelay -= Time.deltaTime;
