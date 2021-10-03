@@ -73,13 +73,12 @@ public class GameEngine : MonoBehaviour
 
     public void Restart()
     {
+        var scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
         GameOver = false;
         GameOverCause = string.Empty;
         GameStartDelay = StartDelay;
         DistanceToGround = 99f;
         UnstableDuration = 0f;
-        var scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
-
     }
 
     public void SetGameOver(string cause)
