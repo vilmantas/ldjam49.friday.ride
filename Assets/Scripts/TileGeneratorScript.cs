@@ -71,6 +71,8 @@ public class TileGeneratorScript : MonoBehaviour
         return Tiles[Random.Range(0, Tiles.Length)];
     }
 
+    public int Counter = 0;
+
     public void AppendTile(GameObject tile)
     {
         var instance = Instantiate(tile, NextPosition, new Quaternion(), transform);
@@ -85,6 +87,9 @@ public class TileGeneratorScript : MonoBehaviour
         }
 
         NextPosition.z += b.size.z;
+        Counter++;
+        if (Counter == 1) return;
+        Destroy(transform.GetChild(0).gameObject);
     }
 
     private Bounds GetTileBounds(GameObject Tile)
