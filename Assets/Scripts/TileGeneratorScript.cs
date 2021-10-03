@@ -5,7 +5,7 @@ using UnityEngine;
 [ExecuteAlways]
 public class TileGeneratorScript : MonoBehaviour
 {
-    public GameObject Tile;
+    public GameObject[] Tiles;
 
     public bool Reset = false;
 
@@ -37,7 +37,12 @@ public class TileGeneratorScript : MonoBehaviour
         if (!Generate) return;
 
         Generate = false;
-        AppendTile(Tile);
+        AppendTile(Tiles[Random.Range(0, Tiles.Length + 1)]);
+    }
+
+    public GameObject GetRandomTile()
+    {
+        return Tiles[Random.Range(0, Tiles.Length + 1)];
     }
 
     public void AppendTile(GameObject tile)
@@ -72,24 +77,8 @@ public class TileGeneratorScript : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (Tile == null) return;
+        if (Tiles == null || Tiles.Length == 0) return;
 
-        Bounds b = new Bounds();
-
-        if (transform.childCount != 0)
-        {
-            foreach (Transform item in transform)
-            {
-                b.Encapsulate(GetTileBounds(item.gameObject));
-            }
-
-            NextPosition.z = b.size.z;
-        }
-        
-        else
-        {
-            b = GetTileBounds(Tile);
-        }
-        Gizmos.DrawWireCube(NextPosition, GetTileBounds(Tile).size);
+        Gizmos.DrawWireCube(NextPosition, GetTileBounds(Tiles[0]).size);
     }
 }

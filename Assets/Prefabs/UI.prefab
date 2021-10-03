@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4276165040092769883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Engine: {fileID: 0}
+  CauseText: {fileID: 0}
   ScoreText: {fileID: 4276165040770531915}
 --- !u!1 &4276165040098760705
 GameObject:
@@ -158,7 +159,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4276165040098760705}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -483,6 +484,8 @@ MonoBehaviour:
   Engine: {fileID: 0}
   Scoreboard: {fileID: 4276165041043666982}
   GameOverScreen: {fileID: 4276165040092769882}
+  StartScreen: {fileID: 0}
+  StartingScreen: {fileID: 0}
 --- !u!1 &4276165040958216220
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Engine: {fileID: 0}
   ScoreText: {fileID: 4276165040958216222}
+  SpeedText: {fileID: 0}
 --- !u!1 &4276165041160836426
 GameObject:
   m_ObjectHideFlags: 0

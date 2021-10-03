@@ -82,7 +82,7 @@ public class PlayerScript : MonoBehaviour
         if (Physics.Raycast(r, out HitInfo, 100f, EndingLayer))
         {
             Destroy(HitInfo.collider.gameObject);
-            Engine.MapGenerator.AppendTile(Engine.MapGenerator.Tile);
+            Engine.MapGenerator.AppendTile(Engine.MapGenerator.GetRandomTile());
         }
 
         if (GameEngine.Pause) 
