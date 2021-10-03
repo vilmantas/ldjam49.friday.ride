@@ -35,6 +35,8 @@ public class GameEngine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space)) Player.Restart();
+
         if (Input.GetKeyDown(KeyCode.S)) _pause = !_pause;
 
         if (Pause) return;

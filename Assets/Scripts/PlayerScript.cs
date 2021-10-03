@@ -49,15 +49,15 @@ public class PlayerScript : MonoBehaviour
     [HideInInspector]
     public Vector3 StartPosition = Vector3.zero;
 
+    private Quaternion StartRotation;
 
     private RaycastHit HitInfo;
 
     private void Start()
     {
+        StartRotation = transform.rotation;
         StartPosition = transform.position;
-        SwingingLeft = 0f;
-        RotationSpeed = 0f;
-        TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingLeft, SwingingIntervalMin + SwingingIntervalDeviation + SwingingLeft);
+        Restart();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -150,5 +150,14 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.DrawRay(BalanceTrigger.transform.position, Vector3.down * info.distance, Color.red);
         }
+    }
+
+    public void Restart()
+    {
+        transform.position = StartPosition;
+        transform.rotation = StartRotation;
+        SwingingLeft = 0f;
+        RotationSpeed = 0f;
+        TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingLeft, SwingingIntervalMin + SwingingIntervalDeviation + SwingingLeft);
     }
 }
