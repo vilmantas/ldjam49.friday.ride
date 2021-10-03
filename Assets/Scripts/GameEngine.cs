@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEngine : MonoBehaviour
 {
@@ -73,8 +75,11 @@ public class GameEngine : MonoBehaviour
     {
         GameOver = false;
         GameOverCause = string.Empty;
-        Player.Restart();
         GameStartDelay = StartDelay;
+        DistanceToGround = 99f;
+        UnstableDuration = 0f;
+        var scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+
     }
 
     public void SetGameOver(string cause)
