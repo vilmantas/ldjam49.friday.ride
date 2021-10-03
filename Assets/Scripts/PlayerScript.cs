@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
 
     public Transform Body;
 
-    private int rotationDireciton = 1;
+    public int RotationDireciton = 1;
 
     public static Transform t;
     public static Quaternion rotation;
@@ -35,21 +35,23 @@ public class PlayerScript : MonoBehaviour
     [HideInInspector]
     public float TimeTillNextSwing = 5f;
     [HideInInspector]
-    public float SwingingDuration = 0;
+    public float SwingingLeft = 0;
     [HideInInspector]
     public float RotationSpeed = 0;
 
+    [HideInInspector]
+    public float SwingingDuration = 0f;
 
     private RaycastHit HitInfo;
 
     private void Start()
     {
-        SwingingDuration = 0f;
+        SwingingLeft = 0f;
         RotationSpeed = 0f;
         target = transform.forward;
         target.y = transform.position.y;
         t = transform;
-        TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingDuration, SwingingIntervalMin + SwingingIntervalDeviation + SwingingDuration);
+        TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingLeft, SwingingIntervalMin + SwingingIntervalDeviation + SwingingLeft);
     }
 
     private void Update()
@@ -63,41 +65,43 @@ public class PlayerScript : MonoBehaviour
 
         if (GameEngine.Stop) return;
 
-        NewTarget = Quaternion.Euler(0, Arc * rotationDireciton, 0) * Vector3.forward;
+        NewTarget = Quaternion.Euler(0, Arc * RotationDireciton, 0) * Vector3.forward;
 
         directionDelta = Input.GetAxisRaw("Horizontal");
         Body.rotation = Quaternion.Euler(new Vector3(0, 0, -transform.eulerAngles.y));
 
-        SwingingDuration -= Time.deltaTime;
+        SwingingLeft -= Time.deltaTime;
         TimeTillNextSwing -= Time.deltaTime;
 
-        if (SwingingDuration < 0)
+        if (SwingingLeft < 0)
         {
             RotationSpeed = 0f;
         }
 
         if (TimeTillNextSwing < 0f)
         {
-            rotationDireciton = new int[] { -1, 1 }[UnityEngine.Random.Range(0, 2)];
+            RotationDireciton = new int[] { -1, 1 }[UnityEngine.Random.Range(0, 2)];
 
             var rotationMethod = new Action[] { SetSmallSwinging, SetMediumSwinging }[UnityEngine.Random.Range(0, 2)];
 
             rotationMethod();
 
-            TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingDuration, SwingingIntervalMin + SwingingIntervalDeviation + SwingingDuration);
+            TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingLeft, SwingingIntervalMin + SwingingIntervalDeviation + SwingingLeft);
         }
     }
 
     void SetSmallSwinging()
     {
         SwingingDuration = UnityEngine.Random.Range(5, 5 + 5);
-        RotationSpeed = UnityEngine.Random.Range(0.3f, 0.3f + 0.5f);
+        SwingingLeft = SwingingDuration;
+        RotationSpeed = UnityEngine.Random.Range(PlayerRotationPower * 0.1f, PlayerRotationPower * 0.1f + PlayerRotationPower * 0.3f);
     }
 
     void SetMediumSwinging()
     {
         SwingingDuration = UnityEngine.Random.Range(1f, 1f + 3f);
-        RotationSpeed = UnityEngine.Random.Range(0.8f, 0.8f + 0.3f);
+        SwingingLeft = SwingingDuration;
+        RotationSpeed = UnityEngine.Random.Range(PlayerRotationPower * 0.4f, PlayerRotationPower * 0.4f + PlayerRotationPower * 0.2f);
     }
 
     void FixedUpdate()
@@ -106,15 +110,13 @@ public class PlayerScript : MonoBehaviour
 
         transform.position += transform.forward * Speed * Time.deltaTime;
 
-        Debug.Log(transform.eulerAngles);
-
         if (directionDelta != 0)
         {
             var newRotation = Vector3.RotateTowards(transform.forward, directionDelta * transform.right, (PlayerRotationPower - RotationSpeed) * Time.deltaTime, 0f);
 
             transform.rotation = Quaternion.LookRotation(newRotation);
         } 
-        else if (SwingingDuration > 0f)
+        else if (SwingingLeft > 0f)
         {
             var newRotation = Vector3.RotateTowards(transform.forward, NewTarget.normalized, RotationSpeed * Time.deltaTime, 0f);
 
