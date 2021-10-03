@@ -1434,7 +1434,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Head: {fileID: 5747741370486300043}
-  PlayerRotationPowerAcceleration: 2
+  PlayerRotationPowerAcceleration: 1.08
   PlayerRotationPower: 2
   SwingingIntervalMin: 2
   SwingingIntervalDeviation: 5
