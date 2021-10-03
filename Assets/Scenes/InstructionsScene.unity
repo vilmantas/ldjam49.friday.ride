@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_Fog: 1
+  m_FogColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.001
+  m_LinearFogStart: 45.4
+  m_LinearFogEnd: 874.9
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.183
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -1903,7 +1903,7 @@ RectTransform:
   - {fileID: 130345628}
   - {fileID: 1230963485}
   m_Father: {fileID: 2053700654}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2531,7 +2531,7 @@ RectTransform:
   - {fileID: 653082790}
   - {fileID: 938241912}
   m_Father: {fileID: 2053700654}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3664,7 +3664,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2053700654}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3915,9 +3915,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 432076691}
-  - {fileID: 1947871094}
   - {fileID: 875032943}
   - {fileID: 1050467009}
+  - {fileID: 1947871094}
   m_Father: {fileID: 0}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4076,7 +4076,7 @@ Camera:
   m_GameObject: {fileID: 2115640060}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
