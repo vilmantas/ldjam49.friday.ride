@@ -25,10 +25,8 @@ public class PlayerScript : MonoBehaviour
 
     public int RotationDireciton = 1;
 
-    public static Transform t;
     public static Quaternion rotation;
 
-    private Vector3 target = Vector3.forward;
     private float directionDelta = 0f;
     private Vector3 NewTarget = Vector3.zero;
 
@@ -42,15 +40,17 @@ public class PlayerScript : MonoBehaviour
     [HideInInspector]
     public float SwingingDuration = 0f;
 
+    [HideInInspector]
+    public Vector3 StartPosition = Vector3.zero;
+
+
     private RaycastHit HitInfo;
 
     private void Start()
     {
+        StartPosition = transform.position;
         SwingingLeft = 0f;
         RotationSpeed = 0f;
-        target = transform.forward;
-        target.y = transform.position.y;
-        t = transform;
         TimeTillNextSwing = UnityEngine.Random.Range(SwingingIntervalMin + SwingingLeft, SwingingIntervalMin + SwingingIntervalDeviation + SwingingLeft);
     }
 

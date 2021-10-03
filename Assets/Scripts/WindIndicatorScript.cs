@@ -24,7 +24,7 @@ public class WindIndicatorScript : MonoBehaviour
             Indicator.SetActive(true);
             Indicator.transform.localScale = new Vector3(Engine.Player.RotationDireciton * Indicator.transform.localScale.z, Indicator.transform.localScale.y, Indicator.transform.localScale.z);
 
-            Color c = new Color(1f * SwingPower(), 0, 0, 0.75f + (1f * SwingingLeft() / 4));
+            Color c = new Color(1f, 1 - 1f * SwingPower(), 1 - 1f * SwingPower(), 0.75f + (1f * SwingingLeft() / 4));
 
             Indicator.GetComponentInChildren<Renderer>().material.SetColor("_Color", c);
         } else

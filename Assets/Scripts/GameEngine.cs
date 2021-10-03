@@ -11,6 +11,9 @@ public class GameEngine : MonoBehaviour
     public static bool Stop = true;
 
     public bool StartImmediately = true;
+
+    [HideInInspector]
+    public float Score = 0f;
     private void Start()
     {
         Stop = !StartImmediately;
