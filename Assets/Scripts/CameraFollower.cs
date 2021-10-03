@@ -31,19 +31,7 @@ public class CameraFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckOffset();
-
-        if (GameEngine.UnstableDuration > 0f && !GameEngine.GameOver)
-        {
-            CameraTransform.position = new Vector3(player.position.x + xOffset, CameraTransform.position.y, player.position.z + zOffset) + ShakeOffset;
-        }
-        else
-        {
             CameraTransform.position = new Vector3(player.position.x + xOffset, CameraTransform.position.y, player.position.z + zOffset);
-            ShakeOffset = Vector3.zero;
-            CurrentShakeOffset = CameraMaxShakeOffset;
-
-        }
     }
 
     private void CheckOffset()
