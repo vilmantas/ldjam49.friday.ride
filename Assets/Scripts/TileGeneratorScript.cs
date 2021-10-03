@@ -13,8 +13,15 @@ public class TileGeneratorScript : MonoBehaviour
 
     private Vector3 NextPosition = Vector3.zero;
 
+    private int Count = 1;
+
+    private GameObject CurrentTile;
+
     private void Start()
     {
+        CurrentTile = GetRandomTileInternal();
+        Count = Random.Range(1, 3);
+
         Bounds b = new Bounds();
 
         foreach (Transform item in transform)
@@ -41,6 +48,25 @@ public class TileGeneratorScript : MonoBehaviour
     }
 
     public GameObject GetRandomTile()
+    {
+        GameObject tile;
+
+        if (Count > 0)
+        {
+            tile = CurrentTile;
+            Count--;
+        } else
+        {
+
+            CurrentTile = GetRandomTileInternal();
+            tile = CurrentTile;
+            Count = Random.Range(1, 3);
+        }
+
+        return tile;
+    }
+
+    private GameObject GetRandomTileInternal()
     {
         return Tiles[Random.Range(0, Tiles.Length)];
     }
