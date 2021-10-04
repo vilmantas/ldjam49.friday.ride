@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwingBuildupTime: 1
-  StartingSpeed: 60
+  StartingSpeed: 30
   SpeedIncreaseMax: 70
   TimeToMaxSpeed: 180
   Particles: {fileID: 1991945278}
