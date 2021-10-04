@@ -1616,7 +1616,7 @@ MonoBehaviour:
 
     PAUSE: S
 
-    STOP: ESC'
+    STOP/QUIT: ESC'
 --- !u!222 &653082792
 CanvasRenderer:
   m_ObjectHideFlags: 0

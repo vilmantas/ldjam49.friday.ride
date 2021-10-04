@@ -23,6 +23,8 @@ public class IntroScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+
         if (Time.timeSinceLevelLoad < 0.7f) return;
 
         var t = Time.timeSinceLevelLoad % 60f / 60f;
